@@ -7,8 +7,9 @@ def get_dataset(url: str = None, p: str = None):
         resp = requests.get(url)
         status_code = resp.status_code
         if status_code == 200:
-            with open(f'{p}/{file_name}', 'w') as f:
-                f.write(resp.text)
+            with open(f'{p}/{file_name}', 'wb') as f:
+                f.write(resp.content)
+
             print('Success!!!')
             return f'{p}/{file_name}'
         else:
@@ -18,6 +19,6 @@ def get_dataset(url: str = None, p: str = None):
 
 
 if __name__ == "__main__":
-    url = 'https://stepik.org/media/attachments/course/4852/my_stat_1.csv'
+    url = 'https://flibusta.site/b/534092/epub'
     p = 'Data'
     print(get_dataset(url, p))
